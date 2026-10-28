@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_welcome">
+
+    <!-- Primary RepaRizz Repair Management Destinations -->
+    <fragment
+        android:id="@+id/nav_dashboard"
+        android:name="com.example.fixflow.ui.dashboard.DashboardFragment"
+        android:label="RepaRizz Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboard_to_new_job"
+            app:destination="@id/nav_new_job" />
+        <action
+            android:id="@+id/action_dashboard_to_jobs"
+            app:destination="@id/nav_jobs" />
+        <action
+            android:id="@+id/action_dashboard_to_repair_detail"
+            app:destination="@id/nav_repair_detail" />
+        <action
+            android:id="@+id/action_dashboard_to_shop_map"
+            app:destination="@id/nav_shop_map" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_staff_dashboard"
+        android:name="com.example.fixflow.ui.dashboard.StaffDashboardFragment"
+        android:label="Staff Dashboard"
+        tools:layout="@layout/fragment_staff_dashboard" />
+
+    <fragment
+        android:id="@+id/nav_user_dashboard"
+        android:name="com.example.fixflow.ui.dashboard.UserDashboardFragment"
+        android:label="Customer Dashboard"
+        tools:layout="@layout/fragment_user_dashboard" />
+
+    <fragment
+        android:id="@+id/nav_jobs"
+        android:name="com.example.fixflow.ui.jobs.RepairJobListFragment"
+        android:label="Repair Jobs"
+        tools:layout="@layout/fragment_repair_job_list">
+        <argument
+            android:name="filterStatus"
+            app:argType="string"
+            android:defaultValue="All" />
+        <action
+            android:id="@+id/action_jobs_to_repair_detail"
+            app:destination="@id/nav_repair_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_new_job"
+        android:name="com.example.fixflow.ui.newjob.NewRepairJobFragment"
+        android:label="New Repair Job"
+        tools:layout="@layout/fragment_new_repair_job">
+        <action
+            android:id="@+id/action_new_job_to_repair_detail"
+            app:destination="@id/nav_repair_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_analytics"
+        android:name="com.example.fixflow.ui.analytics.AnalyticsFragment"
+        android:label="Analytics"
+        tools:layout="@layout/fragment_analytics" />
+
+    <fragment
+        android:id="@+id/nav_repair_detail"
+        android:name="com.example.fixflow.ui.detail.RepairDetailFragment"
+        android:label="Repair Record Details"
+        tools:layout="@layout/fragment_repair_detail">
+        <argument
+            android:name="jobId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_repair_detail_to_dashboard"
+            app:destination="@id/nav_dashboard" />
+    </fragment>
+
+    <!-- Optional Supporting Nearby Shop Directory Feature -->
+    <fragment
+        android:id="@+id/nav_shop_map"
+        android:name="com.example.fixflow.ui.shop.ShopMapFragment"
+        android:label="Nearby Repair Shops"
+        tools:layout="@layout/fragment_shop_map" />
+
+    <!-- Auth Portal -->
+    <fragment
+        android:id="@+id/nav_welcome"
+        android:name="com.example.fixflow.ui.auth.WelcomeFragment"
+        android:label="Welcome"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcome_to_user_login"
+            app:destination="@id/nav_user_login" />
+        <action
+            android:id="@+id/action_welcome_to_user_register"
+            app:destination="@id/nav_user_register" />
+        <action
+            android:id="@+id/action_welcome_to_admin_login"
+            app:destination="@id/nav_admin_login" />
+        <action
+            android:id="@+id/action_welcome_to_dashboard"
+            app:destination="@id/nav_dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_user_login"
+        android:name="com.example.fixflow.ui.auth.UserLoginFragment"
+        android:label="User Sign In"
+        tools:layout="@layout/fragment_user_login">
+        <action
+            android:id="@+id/action_user_login_to_register"
+            app:destination="@id/nav_user_register" />
+        <action
+            android:id="@+id/action_user_login_to_dashboard"
+            app:destination="@id/nav_user_dashboard" />
+        <action
+            android:id="@+id/action_user_login_to_staff_dashboard"
+            app:destination="@id/nav_staff_dashboard" />
+        <action
+            android:id="@+id/action_user_login_to_admin_dashboard"
+            app:destination="@id/nav_admin_dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_user_register"
+        android:name="com.example.fixflow.ui.auth.UserRegisterFragment"
+        android:label="Create Account"
+        tools:layout="@layout/fragment_user_register">
+        <action
+            android:id="@+id/action_user_register_to_login"
+            app:destination="@id/nav_user_login" />
+        <action
+            android:id="@+id/action_user_register_to_dashboard"
+            app:destination="@id/nav_user_dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_login"
+        android:name="com.example.fixflow.ui.auth.AdminLoginFragment"
+        android:label="Admin Portal"
+        tools:layout="@layout/fragment_admin_login">
+        <action
+            android:id="@+id/action_admin_login_to_admin_dashboard"
+            app:destination="@id/nav_admin_dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_shop_details"
+        android:name="com.example.fixflow.ui.shop.ShopDetailsFragment"
+        android:label="Shop Details"
+        tools:layout="@layout/fragment_shop_details">
+        <argument
+            android:name="shopId"
+            app:argType="long" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_shop_registration"
+        android:name="com.example.fixflow.ui.shop.ShopRegistrationFragment"
+        android:label="Register Shop"
+        tools:layout="@layout/fragment_shop_registration" />
+
+    <fragment
+        android:id="@+id/nav_saved_shops"
+        android:name="com.example.fixflow.ui.user.SavedShopsFragment"
+        android:label="Saved Favorites"
+        tools:layout="@layout/fragment_saved_shops" />
+
+    <fragment
+        android:id="@+id/nav_user_profile"
+        android:name="com.example.fixflow.ui.user.UserProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_user_profile">
+        <action
+            android:id="@+id/action_user_profile_to_welcome"
+            app:destination="@id/nav_welcome" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_dashboard"
+        android:name="com.example.fixflow.ui.admin.AdminDashboardFragment"
+        android:label="Admin Dashboard"
+        tools:layout="@layout/fragment_admin_dashboard">
+        <action
+            android:id="@+id/action_admin_dashboard_to_pending_review"
+            app:destination="@id/nav_admin_pending_review" />
+        <action
+            android:id="@+id/action_admin_dashboard_to_edit_shop"
+            app:destination="@id/nav_admin_edit_shop" />
+        <action
+            android:id="@+id/action_admin_dashboard_to_add_shop"
+            app:destination="@id/nav_shop_registration" />
+        <action
+            android:id="@+id/action_admin_dashboard_to_welcome"
+            app:destination="@id/nav_welcome" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_admin_pending_review"
+        android:name="com.example.fixflow.ui.admin.AdminPendingReviewFragment"
+        android:label="Pending Registrations"
+        tools:layout="@layout/fragment_admin_pending_review" />
+
+    <fragment
+        android:id="@+id/nav_admin_edit_shop"
+        android:name="com.example.fixflow.ui.admin.AdminEditShopFragment"
+        android:label="Edit Shop Record"
+        tools:layout="@layout/fragment_admin_edit_shop">
+        <argument
+            android:name="shopId"
+            app:argType="long" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_inventory"
+        android:name="com.example.fixflow.ui.inventory.InventoryFragment"
+        android:label="Spare Parts Inventory"
+        tools:layout="@layout/fragment_inventory" />
+
+</navigation>
